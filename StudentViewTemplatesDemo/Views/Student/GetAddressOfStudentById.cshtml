@@ -1,0 +1,69 @@
+﻿@model StudentViewTemplatesDemo.Models.Address
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAddressOfStudentById</title>
+</head>
+<body>
+    <div>
+        <h4>Address</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @if (Model != null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.State)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.State)
+                </dd>
+            }
+            else
+            {
+                <p>No address details available.</p>
+            }
+
+
+        </dl>
+    </div>
+    @if (Model != null)
+    {
+        <p>
+            @Html.ActionLink("Edit", "EditAddress", new { studentId = ViewBag.StudentId, addressId = Model.Id }) |
+            @Html.ActionLink("Delete", "DeleteAddress", new { studentId = ViewBag.StudentId, addressId = Model.Id }) |
+            @Html.ActionLink("Back to List", "GetAllStudents")
+        </p>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Add", "AddAddress", new { studentId = ViewBag.StudentId}) |
+            @Html.ActionLink("Back to List", "GetAllStudents")
+        </p>
+    }
+</body>
+</html>
